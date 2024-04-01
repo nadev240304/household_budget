@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block title %}月間支出{% endblock %}
+
+{% block contents %}
+<div class="container">
+  <div class="d-flex align-items-center mb-4">
+    <h1 class="me-4" style="color:#566270">月間支出</h1>
+    <div class="month-pager">
+      <a href="{% url 'spending:month_dashboard' prev_year prev_month %}" class="me-2" style="color:#9370DB">
+        前月
+      </a>
+      <span class="me-2" style="color:#566270">{{ year_month }}</span>
+      <a href="{% url 'spending:month_dashboard' next_year next_month %}" class="me-2" style="color:#9370DB">
+        次月
+      </a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title" style="color:#566270">{{ year_month }}の支出</h5>
+          <table class="table" style="color:#566270">
+            <thead>
+              <tr>
+                <th>カテゴリ</th>
+                <th>金額</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for key, value in table_set.items %}
+              <tr>
+                <td>{{ key }}</td>
+                <td>{{ value|intcomma }}円</td>
+              </tr>
+              {% endfor %}
+              <tr>
+                <td><strong>支出合計</strong></td>
+                <td><strong>{{ total_payment|intcomma }}円</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          {{ plot_pie_kinds|safe }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          {{ plot_pie|safe }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extrajs %}
+<!-- plotlyのjs -->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+{% endblock %}

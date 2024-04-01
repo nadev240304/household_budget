@@ -1,0 +1,140 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author"
+          content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+
+    <style>
+      body {
+        background-color: #E0E3DA;
+      }
+
+      .btn-custom {
+        background-color: #9370DB;
+        color: #ffffff;
+      }
+
+      /* month-pager */
+      .month-pager {
+        text-align: center;
+        font-size: 1.6rem;
+      }
+      
+      .month-dash-page-top {
+        display: flex;
+        flex-direction: row;
+      }
+      
+      .left {
+        width: 40%;
+        padding: 0 5%;
+      }
+      
+      .right {
+        width: 60%;
+        padding: 0 5%;
+      }
+      
+      /*ナビバー区切り線*/
+      .navbar-nav > li {
+        border-right: 1px solid #E0E3DA;
+        padding-right: 15px;
+        padding-left: 15px;
+      }
+      
+      .navbar-nav > li:last-child {
+        border-right: none;
+      }
+      /*ナビバー背景*/
+      .bg-navy {
+        background-color: #566270;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header style="padding-top: 56px;">
+      <nav class="navbar navbar-expand-md navbar-dark bg-navy shadow-sm fixed-top justify-content-center">
+        <div class="container">
+          <a class="navbar-brand">
+            <strong>カケイ++</strong>
+          </a>
+          {% if user.is_authenticated %}
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarHeader">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'spending:create' %}">支出登録</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'spending:index' %}">支出一覧</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'spending:month_dashboard' now_year now_month %}">月間支出</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'accounts:logout' %}">ログアウト</a>
+              </li>
+              <li class="navbar-text me-2">
+                ユーザー：{{ user.username }}
+              </li>
+            </ul>
+          </div>
+          {% else %}
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarHeader">
+            <ul class="navbar-nav mb-2 mb-md-0">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'accounts:signup' %}">サインアップ</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'accounts:login' %}">ログイン</a>
+              </li>
+            </ul>
+          </div>
+          {% endif %}
+        </div>
+      </nav>
+    </header>
+    <main>
+      {% block contents %}{% endblock %}
+      {% block extrajs %}{% endblock %}
+    </main>
+
+    {% if user.is_authenticated %}
+    <footer class="text-muted py-5">
+      <div class="container text-center">
+        <p>&copy; 2024 nagasaki</p>
+      </div>
+    </footer>
+    {% endif %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+            {% if user.is_authenticated %}
+              <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+              <script>
+                function addDarkmodeWidget() {
+                  new Darkmode().showWidget();
+                }
+                window.addEventListener('load', addDarkmodeWidget);
+              </script>
+            {% endif %}
+  </body>
+</html>

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block title %}削除ページ{% endblock %}
+{% block contents %}
+<div class="container">
+  <div class="mt-5">
+    <h3 style="color:#566270">本当に削除してよろしいですか？</h3>
+  </div>
+  <form class="mt-4" method="post">
+    <div class="table-responsive" style="color:#566270">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>日付：{{ object.date }}</td>
+          </tr>
+          <tr>
+            <td>カテゴリ：{{ object.category }}</td>
+          </tr>
+          <tr>
+            <td>金額：{{ object.amount|intcomma }}円</td>
+          </tr>
+          <tr>
+            <td>用途：{{ object.memo }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    {% csrf_token %}
+    <button type="submit" class="btn btn-secondary me-2">はい、削除します</button>
+    <a class="btn btn-custom" href="{% url 'spending:index'%}">いいえ、一覧に戻ります</a>
+  </form>
+  
+</div>
+{% endblock %}

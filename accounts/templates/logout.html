@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Log out{% endblock %}
+
+      {% block contents %}
+      <div class="container">
+        <div class="row">
+          <div class="col offset-4 py-4">
+
+          <h3 style="color:#566270">ログアウトしました</h3>
+          <p><a href="{% url 'spending:title' %}" style="color:#9370DB">トップページへ</a><p>
+      {% endblock %}

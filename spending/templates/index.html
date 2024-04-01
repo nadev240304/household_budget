@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block title %}支出一覧{% endblock %}
+
+{% block contents %}
+{% for msg in messages %}
+<div class="alert alert-{{ msg.tags }}" role="alert">
+<span>{{ msg }}</span>
+</div>
+{% endfor %}
+<div class="container">
+  <h1 class="mb-4" style="color:#566270">支出一覧</h1>
+  <style>
+    /* 偶数行 */
+    .table-striped tbody tr:nth-of-type(odd) {
+      background-color: #C7E8FA; /* 水色 */
+    }
+    /* 奇数行 */
+    .table-striped tbody tr:nth-of-type(even) {
+      background-color: #fff; /* 白 */
+    }
+  </style>
+
+  <form class="mt-2" id="search-form" action="" method="GET">
+    <div class="row">
+      <div class="col-auto border border-2 p-2">
+        <label class="label" style="color:#566270">年月・支出分類で絞り込む</label>
+        {{ search_form.year }}
+        {{ search_form.month }}
+        {{ search_form.kinds }}
+          <button class="btn btn-custom" type="submit">検索</button>
+      </div>
+    </div>
+  </form>
+
+  <div class="mt-4"></div>
+  <div class="table-responsive">
+      <table class="table table-hover table-striped" style="color:#566270">
+        <thead>
+          <tr>
+            <th scope="col">日付</th>
+            <th scope="col">金額</th>
+            <th scope="col">カテゴリ</th>
+            <th scope="col">用途</th>
+            <th scope="col">支出分類</th>
+            <th scope="col">操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for record in orderby_records %}
+          <tr>
+            <td>{{ record.date }}</td>
+            <td>{{ record.amount|intcomma }}円</td>
+            <td>{{ record.category }}</td>
+            <td>{{ record.memo }}</td>
+            <td>{{ record.kinds }}</td>
+            <td>
+              <div class="btn-group" role="group">
+                <a class="btn btn-custom btn-sm" href="{% url 'spending:update' record.pk %}">更新</a>
+                <a class="btn btn-secondary btn-sm" href="{% url 'spending:delete' record.pk %}">削除</a>
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+  <nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+      {% if page_obj.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="{% url 'spending:index' %}" style="color:#9370DB">&laquo; first</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="{% url 'spending:index' page=page_obj.previous_page_number %}" style="color:#9370DB">&laquo; prev</a>
+      </li>
+      {% else %}
+      <li class="page-item disabled">
+        <span class="page-link">&laquo; first</span>
+      </li>
+      <li class="page-item disabled">
+        <span class="page-link">&laquo; prev</span>
+      </li>
+      {% endif %}
+      <li class="page-item">
+        <span class="page-link" style="color:#566270">{{ page_obj.number }}/{{ page_obj.paginator.num_pages }}</span>
+      </li>
+      {% if page_obj.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="{% url 'spending:index' page=page_obj.next_page_number %}" style="color:#9370DB">next &raquo;</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="{% url 'spending:index' page=page_obj.paginator.num_pages %}" style="color:#9370DB">last &raquo;</a>
+      </li>
+      {% else %}
+      <li class="page-item disabled">
+        <span class="page-link">next &raquo;</span>
+      </li>
+      <li class="page-item disabled">
+        <span class="page-link">last &raquo;</span>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+</div>
+
+{% endblock %}
