@@ -17,7 +17,7 @@ from .forms import SpendingSearchForm
 
 # トップページ
 class TitleView(TemplateView):
-    template_name = 'spending_title.html'
+    template_name = 'profile.html'
 
 # 支出一覧
 @method_decorator(login_required, name='dispatch')
