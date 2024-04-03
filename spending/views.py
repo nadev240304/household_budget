@@ -15,9 +15,13 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from .forms import SpendingSearchForm
 
+# プロフィール
+class ProfileView(TemplateView):
+    template_name = 'profile.html'
+
 # トップページ
 class TitleView(TemplateView):
-    template_name = 'profile.html'
+    template_name = 'spending_title.html'
 
 # 支出一覧
 @method_decorator(login_required, name='dispatch')
