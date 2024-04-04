@@ -1,13 +1,14 @@
 {% load static %}
 
 <!DOCTYPE HTML>
-
 <html>
 	<head>
 		<title> 長﨑貴之ポートフォリオサイト</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+		<link href="https://use.fontawesome.com/releases/v6.5.2/css/all.css" rel="stylesheet">
+
 	</head>
 	<body class="is-preload">
 
@@ -36,7 +37,6 @@
 								開発中言語：Python,Django <br>
 								希望勤務地：関東 <br>
 								ご興味を持って頂きましたらご連絡ください！！</p>
-							<!-- <a href="#work" class="button large scrolly">Learn about what I do</a> -->
 						</div>
 					</div>
 				</div>
@@ -44,18 +44,6 @@
 
 		<!-- About me -->
 		<article id="work" class="wrapper style2">
-			<!-- ここから参照 -->
-			<!-- <div class="left_space">
-				<img src="{% static 'images/profile_image2.jpg' %}" class="profile_image" alt="長﨑 貴之（ながさき たかゆき）">
-				<div class="sns">
-					<ul class="text_center">
-						<li><a href="https://twitter.com/NA1212409" class="twitter" target="_blank">Twitter</a></li>
-						<li><a href="https://https://github.com/nadev240304" class="github" target="_blank">GitHub</a></li>
-						<li><a href="mailto:ths4w4u7@gmail.com" class="email" target="_blank">E-mail</a></li>
-					</ul>
-				</div>
-			</div> -->
-			<!-- ここまで参照 -->
 				<div class="container">
 					<header>
 						<h1>About me</h1>
@@ -130,14 +118,13 @@
 							<article class="box style2">
 								<a href="#" class="image featured"><img src="static/images/pic03.jpg" alt="" /></a>
 								<h3>成果物</h3><br>
-								<h3><a href="{% url 'spending:title' %}"><span style="color: #9370DB;">カケイ＋＋(カケイプラス)</span></a></h3><br>
+								<h3><a href="{% url 'spending:title' %}"><span style="color: #9370DB;"><u>カケイ＋＋(カケイプラス)</u></span></a></h3><br>
 								<p style="text-align: left;">
 									<strong>■どんなwebアプリ？</strong><br>
 									→支出管理アプリです！<br>
 									日々の支出を消費・投資・浪費で分類し、グラフ管理することで必要な支出を見直し、資産形成を手助けします！<br>
 									<strong>■なぜ作った？</strong><br>
-									<!-- →ファイナンシャルプランナー目線で日々の支出を見える化し、支出管理が得意でない方でも資産形成できるように作りました！<br> -->
-									→支出管理が得意でない方でも資産形成できるよう手助けしたいと思い、ファイナンシャルプランナー目線で考え作りました！<br>
+									→支出管理が得意でない方でも資産形成できるよう手助けしたいと思い、ファイナンシャルプランナー目線で考え開発しました！<br>
 									<strong>■こだわったところは？</strong><br>
 									・viewはクラスベースビューで作成しました。<br>
 									・AbstractBaseUserを継承しログイン実装<br>
@@ -148,8 +135,8 @@
 									pandas(データ操作)<br>
 									Darkmode.js(ダークモード)<br>
 									datepicker(カレンダー)<br>
-									<strong>制作したアプリの実行画面動画</strong><br>
-									<video autoplay muted playsinline controls src="{% static 'images/demonstration.mp4' %}" class="capture_video"></video></p>
+									<strong>■制作したアプリの実行画面動画</strong><br>
+									<video width="320" height="200" autoplay muted playsinline controls src="{% static 'images/demonstration.mp4' %}" class="capture_video"></video></p>
 							</article>
 						</div>
 						<div class="col-4 col-6-medium col-12-small">
@@ -166,7 +153,7 @@
 								<h3>今後学習したいこと</h3>
 								<p style="text-align: left;">
 								JavaScript,TypeScript<br>
-								他言語(Ruby,PHP)のMVCフレームワーク<br>
+								他言語(Ruby,PHP等)のMVCフレームワーク<br>
 							</article>
 						</div>
 						<div class="col-4 col-6-medium col-12-small">
@@ -185,32 +172,7 @@
 								現在、LPICレベル1を学習中です。</p>
 							</article>
 						</div>
-						<div class="col-4 col-6-medium col-12-small">
-							<article class="box style2">
-								<a href="#" class="image featured"><img src="static/images/pic04.jpg" alt="" /></a>
-								<h3><a href="#">Tempus dolore</a></h3>
-								<p>Ornare nulla proin odio consequat.</p>
-							</article>
-						</div>
-						<div class="col-4 col-6-medium col-12-small">
-							<article class="box style2">
-								<a href="#" class="image featured"><img src="static/images/pic05.jpg" alt="" /></a>
-								<h3><a href="#">Feugiat aliquam</a></h3>
-								<p>Ornare nulla proin odio consequat.</p>
-							</article>
-						</div>
-						<div class="col-4 col-6-medium col-12-small">
-							<article class="box style2">
-								<a href="#" class="image featured"><img src="static/images/pic06.jpg" alt="" /></a>
-								<h3><a href="#">Sed amet ornare</a></h3>
-								<p>Ornare nulla proin odio consequat.</p>
-							</article>
-						</div>
 					</div>
-					<!-- <footer>
-						<p>Lorem ipsum dolor sit sapien vestibulum ipsum primis?</p>
-						<a href="#contact" class="button large scrolly">Get in touch with me</a>
-					</footer> -->
 				</div>
 			</article>
 
@@ -223,14 +185,9 @@
 							<hr />
 							<h3>Contact</h3>
 							<ul class="social">
-								<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-								<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
-								<li><a href="#" class="fa fa-camera-retro"><span class="label"></span></a></li>
-								<li><a href="#" class="fa-regular fa-envelope"><span class="label"></span></a></li>
-								<li><i class="fa-brands fa-github"></i></li>
-								
-							<!-- <li><a href="mailto:ths4w4u7@gmail.com" class="email" target="_blank">E-mail</a></li>
-							<a href="https://twitter.com/NA1212409">X</a> -->
+								<li><a href="https://twitter.com/NA1212409" class="fa-brands fa-x-twitter fa-2x" style="text-decoration:none; color:inherit" ><span class="label"></span></a></li>
+								<li><a href="https://github.com/nadev240304" class="fa-brands fa-github fa-2x" style="text-decoration:none; color:inherit" ><span class="label"></span></a></li>
+								<li><a href="mailto:ths4w4u7@gmail.com" class="fa-regular fa-envelope fa-2x" style="text-decoration:none; color:inherit" ><span class="label"></span></a></li>
 							</ul>
 							<hr />
 						</div>

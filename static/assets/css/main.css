@@ -1819,8 +1819,10 @@ input, select, textarea {
 					width: 48px;
 				}
 
-				ul.social li a.fa-twitter {
-					background-color: #2DAAE4;
+
+
+				ul.social li a.fa-x-twitter {
+					background-color: #FAFAFA;
 				}
 
 				ul.social li a.fa-facebook-f {
@@ -1844,6 +1846,10 @@ input, select, textarea {
 				}
 
 				ul.social li a.fa-github {
+					background-color: #FAFAFA;
+				}
+
+				ul.social li a.fa-envelope {
 					background-color: #FAFAFA;
 				}
 
