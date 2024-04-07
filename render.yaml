@@ -8,7 +8,6 @@ databases:
 services:
   - type: web
     name: nagasaki_portfolio
-    env: python
     region: singapore
     plan: free
     branch: main
