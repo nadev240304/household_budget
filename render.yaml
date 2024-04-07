@@ -13,6 +13,7 @@ services:
     branch: main
     healthCheckPath: /
     runtime: python
+    repo: https://github.com/nadev240304/household_budget
     buildCommand: "./build.sh"
     startCommand: "python -m gunicorn mysite.asgi:application -k uvicorn.workers.UvicornWorker"
     envVars:
