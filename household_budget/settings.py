@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure-of%ad_!)=w!5!)y3(1&j4yn8^a3uub!&c0%4o=37h@&+f7%&y=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["https://nagasaki-portfolio.onrender.com/"]
 
 
 # Application definition

@@ -13,7 +13,6 @@ services:
     branch: main
     healthCheckPath: /
     runtime: python
-    repo: https://github.com/nadev240304/household_budget
     buildCommand: "./build.sh"
     startCommand: "gunicorn household_budget.wsgi"
     envVars:
