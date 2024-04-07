@@ -1,0 +1,28 @@
+databases:
+  - name: household_budget_db
+    plan: free
+    databaseName: household_budget_db
+    user: django_user
+    region: singapore
+
+services:
+  - type: web
+    name: nagasaki_portfolio
+    env: python
+    region: singapore
+    plan: free
+    branch: main
+    healthCheckPath: /
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "python -m gunicorn mysite.asgi:application -k uvicorn.workers.UvicornWorker"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: household_budget_db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
+    autoDeploy: true
