@@ -14,7 +14,7 @@ services:
     healthCheckPath: /
     runtime: python
     buildCommand: "./build.sh"
-    startCommand: "gunicorn household_budget.wsgi"
+    startCommand: "gunicorn household_budget.wsgi --log-file -"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
